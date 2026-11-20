@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.trip-theme-dark {
+  color-scheme: dark;
+}
+
+.trip-theme-dark .bg-white,
+.trip-theme-dark .bg-white\/90,
+.trip-theme-dark .bg-white\/80 {
+  background-color: #111827;
+}
+
+.trip-theme-dark .bg-slate-50,
+.trip-theme-dark .bg-slate-50\/60,
+.trip-theme-dark .bg-slate-50\/40,
+.trip-theme-dark .bg-slate-50\/90 {
+  background-color: #1e293b;
+}
+
+.trip-theme-dark .bg-slate-100,
+.trip-theme-dark .bg-slate-200,
+.trip-theme-dark .bg-slate-200\/70,
+.trip-theme-dark .bg-slate-200\/80 {
+  background-color: #334155;
+}
+
+.trip-theme-dark .bg-indigo-50,
+.trip-theme-dark .bg-indigo-50\/60,
+.trip-theme-dark .bg-indigo-50\/50,
+.trip-theme-dark .bg-indigo-100 {
+  background-color: #312e81;
+}
+
+.trip-theme-dark .bg-amber-50,
+.trip-theme-dark .bg-amber-50\/70,
+.trip-theme-dark .bg-amber-100 {
+  background-color: #422006;
+}
+
+.trip-theme-dark .bg-emerald-50,
+.trip-theme-dark .bg-emerald-50\/70,
+.trip-theme-dark .bg-emerald-100 {
+  background-color: #064e3b;
+}
+
+.trip-theme-dark .bg-gradient-to-br {
+  background-image: none;
+  background-color: #111827;
+}
+
+.trip-theme-dark .text-slate-900,
+.trip-theme-dark .text-slate-800 {
+  color: #f1f5f9;
+}
+
+.trip-theme-dark .text-slate-700,
+.trip-theme-dark .text-slate-600 {
+  color: #cbd5e1;
+}
+
+.trip-theme-dark .text-slate-500,
+.trip-theme-dark .text-slate-400 {
+  color: #94a3b8;
+}
+
+.trip-theme-dark .text-slate-300 {
+  color: #64748b;
+}
+
+.trip-theme-dark .text-indigo-700 {
+  color: #c7d2fe;
+}
+
+.trip-theme-dark .text-indigo-600 {
+  color: #a5b4fc;
+}
+
+.trip-theme-dark .text-amber-700 {
+  color: #fcd34d;
+}
+
+.trip-theme-dark .text-emerald-700 {
+  color: #6ee7b7;
+}
+
+.trip-theme-dark .text-emerald-800 {
+  color: #a7f3d0;
+}
+
+.trip-theme-dark .border-slate-100,
+.trip-theme-dark .border-slate-200,
+.trip-theme-dark .border-slate-300 {
+  border-color: #334155;
+}
+
+.trip-theme-dark nav {
+  background-color: #0f172a;
+  border-color: #334155;
+}
+
+.trip-theme-dark nav button:hover {
+  background-color: #334155;
+}
+
+.trip-theme-dark input,
+.trip-theme-dark textarea,
+.trip-theme-dark select {
+  color: #e2e8f0;
+}
+
+.trip-theme-dark input::placeholder,
+.trip-theme-dark textarea::placeholder {
+  color: #94a3b8;
+}
