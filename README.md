@@ -1,90 +1,38 @@
-# React + TypeScript + Vite
+# Trip Planner
 
-## Supabase setup
+Planuj wyjazdy na mapie: wyszukuj miejsca, układaj trasę dzień po dniu i przechowuj ulubione punkty w jednym miejscu.
 
-Set these Vite variables and restart the dev server:
+## Co potrafi
 
-```env
-VITE_SUPABASE_URL=https://<project-ref>.supabase.co
-VITE_SUPABASE_ANON_KEY=<publishable-or-anon-key>
+- Wyszukiwanie miast, zabytków, restauracji i innych miejsc na Google Maps.
+- Polecane miejsca filtrowane według kategorii i widocznego obszaru mapy.
+- Wiele planów podróży z osią czasu, podziałem na dni i zmianą kolejności punktów.
+- Wyznaczanie i optymalizacja tras pieszych oraz samochodowych.
+- Zapisane miejsca, własne foldery, notatki i tagi.
+- Rejestracja i logowanie przez Supabase Auth, reset hasła oraz sesja „Zapamiętaj mnie”.
+- Synchronizacja planów, zapisanych miejsc, folderów, ustawień i historii z Supabase.
+- Import starszych danych przeglądarki do konta użytkownika.
+- Jasny i ciemny motyw oraz mapa standardowa i satelitarna.
+
+## Technologie
+
+React 19 · TypeScript · Vite · Tailwind CSS · Google Maps JavaScript API · Supabase Auth i PostgreSQL
+
+## Dane i bezpieczeństwo
+
+Supabase przechowuje workspace użytkownika. Dostęp do tabel powinien być chroniony przez Row Level Security z politykami opartymi o `auth.uid()`. Przeglądarka korzysta wyłącznie z klucza publishable/anon — nigdy nie umieszczaj klucza `service_role` w kodzie ani w zmiennych `VITE_`.
+
+Przy pierwszym logowaniu aplikacja może zaproponować import starszych setów, zapisanych miejsc, folderów i ustawień z przeglądarki. Nieimportowane dane lokalne pozostają kopią w tej przeglądarce.
+
+## Uruchomienie
+
+Wymagany Node.js i npm. Skopiuj `.env.example` do `.env`, uzupełnij klucze Google Maps i Supabase, a następnie uruchom:
+
+```bash
+npm install
+npm run dev
 ```
 
-Use the project URL from Supabase Settings → API. It should be the project root, not a REST endpoint such as `/rest/v1` or an Auth endpoint such as `/auth/v1`. The client strips those two known suffixes if they were pasted accidentally. Never put a Supabase `service_role` key in a `VITE_` variable.
+W Supabase włącz Email Auth i dodaj adres localhost oraz domenę wdrożenia do dozwolonych URL-i przekierowań. Przy nowej bazie uruchom najpierw `src/assets/gemini-code-1793812270068.sql`, a następnie `supabase/migrations/20261104_workspace_persistence.sql`.
 
-Enable Email auth in the Supabase dashboard and configure the site URL and allowed redirect URLs for localhost and the deployed domain. Email confirmation can be enabled; when enabled, registration asks the user to confirm their address before signing in.
-
-The frontend gate only controls what the browser renders; it is not an authorization boundary. Protect database rows with Supabase Row Level Security and policies scoped to `auth.uid()`. Trip plans and saved places are currently stored in `localStorage`, so they are not yet synced to accounts or isolated between users. Move them to user-scoped Supabase tables before publishing for multiple users.
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
-
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+Przydatne polecenia: `npm run lint`, `npm run build`, `npm run preview`.

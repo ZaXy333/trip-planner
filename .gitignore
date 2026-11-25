@@ -24,4 +24,6 @@ dist-ssrsS
 *.sw?
 
 # Other files and directoriesss
-.env
+# Environment variables and credentials
+.env*
+!.env.example
